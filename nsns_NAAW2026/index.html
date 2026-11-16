@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Strong, Accessible Canada</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        html {
+            scroll-padding-top: 120px;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #F7F7F7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* .top-stripe {
+            position: fixed; 
+            top: 80px;
+            background: linear-gradient(90deg, #EAF4F4, #F7F7F7);
+            color: #1F3A5F;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 10px;
+            z-index: 999;
+            border-bottom: 1px solid #ddd;
+        } */
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            /* vertical center alignment */
+            gap: 10px;
+            /* space between logo and text */
+        }
+
+        .logo-img {
+            height: 60px;
+            margin-top: 0;
+            /* remove the top push */
+        }
+
+        /* .hero-eyebrow {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.9);
+} */
+
+
+
+        .hero-eyebrow {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            margin-bottom: 12px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 2px 6px rgba(0, 0, 0, 0.5),
+                0 0 2px rgba(0, 0, 0, 0.6);
+        }
+
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-bottom: 12px;
+            
+            
+            color: #ffffff;
+            text-shadow:
+                0 2px 6px rgba(0,0,0,0.6),
+                0 0 2px rgba(0,0,0,0.7);
+
+           
+
+            background: rgba(255, 255, 255, 0.15); /* soft overlay */
+            border-radius: 8px;
+            backdrop-filter: blur(6px); /* subtle glass effect */
+        }
+
+        .hero-meta {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+
+            text-shadow:
+                0 2px 6px rgba(0,0,0,0.5),
+                0 0 2px rgba(0,0,0,0.6);
+        }
+
+
+        /* .hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+} */
+
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                top: 70px;
+                left: 75%;
+                transform: translateX(-50%);
+                /* center the menu */
+                background: white;
+                width: 50%;
+                max-width: 300px;
+                /* optional limit */
+                display: none;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+            .nav a {
+                margin: 10px 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav .btn {
+                padding: 8px 14px;
+                /* smaller */
+                font-size: 0.9rem;
+                border-radius: 18px;
+                display: inline-block;
+                /* prevent full-width look */
+                width: 80px;
+            }
+        }
+
+
+
+
+        header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        header nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #1F3A5F;
+            font-weight: 500;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #1F3A5F;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #2A9D8F;
+            color: white;
+        }
+
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+                url('image/hero.jpg') center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 540px;
+            margin-left: 9%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .hero-bottom {
+            margin-top: 40px; /* desktop spacing */
+        }
+
+        /* Buttons spacing */
+        .hero .btn {
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+
+        @media (min-width: 769px) {
+            .hero {
+                position: relative;
+                min-height: 90vh;
+                overflow: hidden;
+                /* hide parts outside the container */
+            }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: -200px;
+                /* amount of top to hide */
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('image/hero.jpg') center/cover no-repeat;
+                z-index: -1;
+            }
+
+            /* remove previous background */
+            .hero {
+                background: none;
+            }
+        }
+
+        /* Mobile optimization */
+        /* @media (max-width: 768px) {
+    .hero {
+        background-position: 80% center;
+        align-items: center;
+        text-align: left;
+        padding: 40px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .btn {
+        display: inline-block;
+        font-size: 0.9rem;
+        padding: 8px 14px;
+    }
+} */
+        @media (max-width: 768px) {
+            .hero {
+                background-position: 80% center;
+                min-height: 100vh;
+                /* fill full screen */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px 20px 10px;
+                /* less top, tighter bottom */
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            .hero-top {
+                margin-top: 10px;
+            }
+
+            .hero-bottom {
+                margin-top: 310px;
+                padding-bottom: 20px;
+                /* push closer to bottom edge */
+            }
+
+            .hero-bottom p {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+                line-height: 1.3;
+                text-shadow:
+                    0 2px 6px rgba(0, 0, 0, 0.5),
+                    0 0 2px rgba(0, 0, 0, 0.6);
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+
+
+            .hero .btn {
+                display: block;
+                width: 70%;
+                /* same width */
+                margin: 8px auto;
+                /* center + spacing */
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+
+        .section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section h2 {
+            color: #1F3A5F;
+            margin-bottom: 20px;
+            text-align: left;
+            /* enforce consistency */
+        }
+
+
+
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #1F3A5F;
+            font-size: 1.2rem;
+        }
+
+
+
+        .audience-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .audience-group h3 {
+            color: #1F3A5F;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .audience-group ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .audience-group li {
+            margin-bottom: 6px;
+        }
+
+
+        .highlight {
+            background: #EAF4F4;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        /* .partners {
+    max-width: 900px;
+} */
+
+        .partner-group {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .partner-role {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .partner-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .partner-item img {
+            width: 80px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .partner-item strong {
+            display: block;
+            color: #1F3A5F;
+            margin-bottom: 5px;
+        }
+
+        .partner-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .partner-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .partner-item img {
+                width: 60px;
+            }
+        }
+
+        footer {
+            background: #1F3A5F;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        a {
+            color: #2A9D8F;
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .city-section {
+            margin-bottom: 50px;
+        }
+
+        /* =========================
+   SCHEDULE SECTION (ENHANCED)
+========================= */
+
+        /* Layout */
+        .schedule-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        /* Card */
+        .schedule-card {
+            position: relative;
+            cursor: pointer;
+            border-radius: 14px;
+            padding: 25px;
+
+            background: linear-gradient(to bottom,
+                    #f0f6fa 0%,
+                    #e6f2f1 100%);
+
+            color: #333;
+            border: 1px solid #e0e6ed;
+            border-left: 4px solid #2A9D8F;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease,
+                border-left 0.3s ease;
+        }
+
+        /* 🔥 Hover Effect (More Standout) */
+        .schedule-card:hover {
+            transform: translateY(-6px) scale(1.01);
+
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+
+            background: linear-gradient(to bottom,
+                    #f8fcff 0%,
+                    #e0f4f2 100%);
+
+            border-left: 6px solid #2A9D8F;
+        }
+
+        /* Glow ring on hover */
+        .schedule-card:hover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            pointer-events: none;
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.15);
+        }
+
+        /* Click hint */
+        .schedule-card::before {
+            content: "Click to expand";
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 0.75rem;
+            color: #888;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .schedule-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Header */
+        .schedule-header {
+            border-bottom: 1px solid #dbe5ec;
+            padding-bottom: 10px;
+        }
+
+        .schedule-header strong,
+        .schedule-header h3 {
+            color: #1F3A5F;
+        }
+
+        .schedule-header h3 {
+            margin-top: 10px;
+        }
+
+        .schedule-header span {
+            display: block;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Accordion content */
+        .schedule-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+
+            transition:
+                max-height 0.45s ease,
+                opacity 0.35s ease,
+                transform 0.35s ease;
+        }
+
+        /* Expanded state */
+        .schedule-card.active .schedule-content {
+            max-height: 2000px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 15px;
+        }
+
+        /* Active card styling */
+        .schedule-card.active {
+            transform: translateY(-4px);
+
+            box-shadow: 0 16px 32px rgba(42, 157, 143, 0.18);
+
+            border-left: 6px solid #2A9D8F;
+
+            background: linear-gradient(to bottom,
+                    #ffffff 0%,
+                    #eaf7f6 100%);
+        }
+
+        /* Text */
+        .schedule-content p {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .schedule-card {
+                padding: 20px;
+            }
+
+            .schedule-card::before {
+                display: none;
+                /* cleaner on mobile */
+            }
+        }
+
+
+        /* =================================
+   PRIME MINISTER MESSAGE BAR
+================================= */
+
+.pm-bar {
+
+    /* Glass effect */
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Soft border instead of heavy lines */
+    border-top: 1px solid rgba(255, 107, 107, 0.25);
+    border-bottom: 1px solid rgba(255, 107, 107, 0.25);
+
+    border-left: 4px solid #ff6b6b;
+
+    /* Subtle elevation */
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.06);
+
+    padding: 12px 22px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Left glow accent */
+.pm-bar::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 5px;
+
+    background: linear-gradient(
+        to bottom,
+        #ff6b6b,
+        #e04848
+    );
+}
+
+/* Optional soft floating glow */
+/*
+.pm-bar::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle at left center,
+        rgba(255, 107, 107, 0.10),
+        transparent 60%
+    );
+
+    pointer-events: none;
+}*/
+
+/* Replace or upgrade your ::after with shimmer */
+.pm-bar::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    /* shimmer gradient */
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.06) 25%,
+        rgba(255, 107, 107, 0.08) 45%,
+        rgba(255, 255, 255, 0.05) 55%,
+        transparent 70%
+    );
+
+    transform: translateX(-100%);
+    animation: pm-glass-shimmer 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+/* shimmer animation */
+@keyframes pm-glass-shimmer {
+    0% {
+        transform: translateX(-120%);
+    }
+    45% {
+        transform: translateX(120%);
+    }
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+.pm-bar-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.pm-bar p {
+
+    margin: 0;
+
+    font-size: 0.9rem;
+
+    line-height: 1.65;
+
+    color: #333;
+
+    letter-spacing: 0.1px;
+}
+
+/* heading text */
+.pm-bar strong {
+
+    color: #1F3A5F;
+
+    font-weight: 700;
+}
+
+/* highlighted PM name */
+.pm-highlight {
+
+    color: #8a2f2f;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            transparent 65%,
+            rgba(255,107,107,0.12) 65%
+        );
+
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* PDF link */
+.pm-bar a {
+
+    color: #3f556b;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    margin-left: 10px;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.pm-bar a:hover {
+
+    color: #1F3A5F;
+
+    text-decoration: underline;
+}
+
+
+.video-container {
+    margin-top: 15px;
+}
+
+.video-container img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.2s ease;
+}
+
+.video-container img:hover {
+    transform: scale(1.03);
+}
+
+
+.recording-note {
+    margin-top: 12px;
+    padding: 10px 14px;
+
+    background: rgba(42, 157, 143, 0.08);
+    border-left: 4px solid #2A9D8F;
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F3A5F;
+
+    line-height: 1.6;
+}
+
+.recording-note a {
+    color: #2A9D8F;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.recording-note a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .pm-bar {
+
+        padding: 10px 16px;
+    }
+
+    .pm-bar p {
+
+        font-size: 0.84rem;
+
+        line-height: 1.55;
+    }
+
+    .pm-bar a {
+
+        display: inline-block;
+
+        margin-top: 6px;
+
+        margin-left: 0;
+    }
+}
+
+
+.speaker-info {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #355c8a;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(31, 58, 95, 0.08);
+}
+
+.speaker-info b {
+    color: #1F3A5F;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .speaker-info {
+        font-size: 0.86rem;
+        line-height: 1.5;
+    }
+
+    .speaker-info b {
+        font-size: 0.9rem;
+    }
+}
+
+        /* =================================
+        OPENING CEREMONY NOTICE
+        ================================= */
+
+        .special-notice {
+            margin-top: 18px;
+
+            background: linear-gradient(135deg, #fff8e8 0%, #ffffff 100%);
+            border-left: 4px solid #d4a017;
+
+            border-radius: 10px;
+
+            padding: 16px 18px;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .special-notice-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #b7791f;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .special-notice p {
+            margin: 0 0 14px 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .special-notice a {
+            display: inline-block;
+            background: #1F3A5F;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 22px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .special-notice a:hover {
+            background: #16304f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <header>
+    <div><strong>NorthStar Initiative</strong></div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#">Register</a>
+    </nav>
+</header> -->
+<header>
+        <div class="brand">
+            <a href="https://www.nsns.ca" target="_self" rel="noopener noreferrer">
+                <img src="image/northstar_logo.jpg" alt="Bright Futures Logo" class="logo-img">
+            </a>
+            <strong>NorthStar Initiative</strong>
+        </div>
+
+        <div class="menu-toggle">☰</div>
+
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#events">Events</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#contact">Contact</a>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScZXqUH5I34WIuZ0VJ17WSh9AiixEH9VzarAXWAMRN-hWb8zQ/viewform" target="_blank" >Register</a>
+        </nav>
+    </header>
+
+   
+
+    <!-- HERO -->
+    <section class="hero">
+        <!-- <div class="top-stripe">
+            Advancing accessibility and inclusion in Asian-Canadian communities through collective action
+        </div> -->
+        <div class="hero-content">
+            <div class="hero-top">
+                <p class="hero-eyebrow">National AccessAbility Week 2026: May 31 - June 6</p>
+                <h1>Building a Strong, Accessible Canada</h1> 
+
+                
+                <!-- <h2 class="hero-subtitle">
+                    Building an Inclusive Future  
+                </h2>  -->
+
+               
+            </div>
+
+
+
+            <div class="hero-bottom">
+                <p>  Advancing accessibility and inclusion in Asian-Canadian communities through collective action</p>
+                <a href="#events" class="btn btn-secondary">View Events</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXqUH5I34WIuZ0VJ17WSh9AiixEH9VzarAXWAMRN-hWb8zQ/viewform" target="_blank" class="btn btn-primary">Register</a>
+                <a href="#" class="btn btn-secondary">Download eMedia Kit</a>
+            </div>
+
+        </div>
+    </section>
+
+
+ 
+
+    <!-- PRIME MINISTER MESSAGE BAR -->
+<section class="pm-bar">
+
+    <div class="pm-bar-container">
+
+        <p>
+
+            🇨🇦
+            <strong>
+                Official Greetings from the Prime Minister of Canada:
+            </strong>
+
+            <span class="pm-highlight">
+                The Right Honourable Mark Carney
+            </span>
+
+            has sent official greetings for the Opening Ceremony of
+            National AccessAbility Week 2026.
+
+            <a href="pdf/PrimeMinisterMessage.pdf" target="_blank">
+                Read Official Message PDF →
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+    <!-- INTRO -->
+    <section class="section center">
+        <h3><strong>A National AccessAbility Week 2026 initiative</strong></h3>
+        <p><strong>May 31-June 6, 2026</strong></p>
+        <p>Join us for a week of events that bring people together through dialogue, learning, and inclusive community
+            participation.</p>
+    </section>
+
+
+      
+
+    <!-- ABOUT -->
+    <section id="about" class="section grid">
+        <div>
+            <h2>About the Initiative</h2>
+            <!-- <p>This initiative brings people together through workshops, panel discussions, community conversations, and inclusive arts and sports activities.</p>
+        <p>Centered in the Greater Toronto Area with select programs across Canada and online.</p> -->
+            <p><strong>Building an Inclusive Future through Collective Action</strong> is NorthStar Special Needs
+                Society's National AccessAbility Week 2026 initiative.</p>
+            <p>Through workshops, panel discussions, community conversations, and inclusive arts and sports activities,
+                the initiative brings people together to advance accessibility, challenge stigma, and strengthen
+                disability inclusion.</p>
+            <p>Programming will be centered in the Greater Toronto Area, with selected sports activities for autistic
+                children also taking place in a small number of other Canadian cities. Key sessions will also be
+                accessible online.</pp>
+            <p>While NorthStar's core work focuses on children with autism and their families, this initiative speaks to
+                broader issues of disability, belonging, and inclusion across Asian-Canadian communities.</pp>
+
+        </div>
+        <!-- <div>
+        <img src="https://via.placeholder.com/500x350" alt="Community event" style="width:100%; border-radius:10px;">
+    </div> -->
+    </section>
+
+    <!-- WHY -->
+    <section class="section highlight">
+        <h2>Why This Matters</h2>
+        <p>In many Asian-Canadian communities, disability is still too often shaped by silence, misunderstanding,
+            stigma, or shame. Cultural expectations, fear of judgment, language barriers, and limited access to
+            culturally relevant support can make it harder for individuals and families to seek help and participate
+            fully in community life.</p>
+        <p>This initiative creates space for conversation, learning, and action. Grounded in cultural understanding and
+            community participation, it aims to support more informed dialogue and more inclusive communities.</p>
+        </p>
+    </section>
+
+    <!-- GOALS -->
+    <section class="section">
+        <h2>What We Hope to Achieve</h2>
+        <div class="grid grid-2">
+
+            <div class="card">
+                <h3>1. Deepen Awareness and Understanding</h3>
+                <p>Broaden understanding of disability experiences in Asian-Canadian communities and encourage more
+                    informed, inclusive perspectives.</p>
+            </div>
+
+            <div class="card">
+                <h3>2. Confront Stigma and Exclusion</h3>
+                <p>Challenge stigma by centering lived experience alongside professional and community insight.</p>
+            </div>
+
+            <div class="card">
+                <h3>3. Support Families and Caregivers</h3>
+                <p>Offer practical knowledge, encouragement, and connection for families and caregivers.</p>
+            </div>
+
+            <div class="card">
+                <h3>4. Share Useful Practices</h3>
+                <p>Highlight approaches that can help educators, service providers, and community organizations support
+                    inclusion in culturally diverse settings.</p>
+            </div>
+
+            <div class="card">
+                <h3>5. Encourage Collective Responsibility</h3>
+                <p>Bring families, professionals, community leaders, and partners together around a shared commitment to
+                    accessibility and inclusion.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="section">
+        <h2>NAAW 2026 Events</h2>
+        <p>This year's programming will include workshops, panel discussions, community conversations, and inclusive
+            arts and sports activities.</p>
+        <p>Events will be anchored in the Greater Toronto Area and will bring together families, persons with
+            disabilities, educators, service providers, community leaders, researchers, and other stakeholders. Selected
+            sports activities for autistic children will also take place in a small number of other Canadian cities,
+            while online access to key sessions will help connect participants more broadly.</p>
+        <p>Register to take part in National AccessAbility Week 2026 events.</p>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXqUH5I34WIuZ0VJ17WSh9AiixEH9VzarAXWAMRN-hWb8zQ/viewform" target="_blank" class="btn btn-primary">Register to Participate</a>
+    </section>
+
+    <!-- SCHEDULE -->
+    <!-- <section id="schedule" class="section">
+    <h2>Event Schedule</h2>
+    <p><strong>Coming Soon</strong></p>
+    <p>Programming will take place May 31-June 6, 2026.<br/></p>
+    <a href="#" class="btn btn-primary">Register for Events</a>
+</section> -->
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="section">
+        <h2>Event Schedule</h2>
+
+        <p>
+            Designed for a diverse audience of caregivers, professionals, and community members, this workshop series
+            explores the intersections of disability, neurodiversity, and mental health within Asian Canadian
+            communities. By addressing specific cultural perspectives and systemic stigmas, the program fosters a space
+            for meaningful dialogue and shared learning. Ultimately, participants will gain practical strategies and a
+            deeper understanding of how to dismantle barriers and promote inclusive practices across all sectors of
+            society.<br /><br />
+        </p>
+
+        <div style="margin-bottom:20px;">
+            <a href="#virtual">Virtual</a> |
+            <a href="#gta">GTA</a> |
+            <a href="#ottawa">Ottawa</a> |
+            <a href="#vancouver">Vancouver</a>
+        </div>
+
+        <div class="city-section">
+            <h3 id="virtual" class="city-tag virtual">💻 Virtual</h3>
+            <div class="grid schedule-grid">
+                <!-- Event 3 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Monday, June 1 (Virtual)</strong><br>
+                        <span>7:00–9:00 PM</span>
+                        <span>Online (Zoom) <a href="https://yorku.zoom.us/j/95287808978?pwd=GmEV2bTR4ERrbcH7AcbYmaM5SH5daO.1">Join meeting</a> (Meeting ID: 952 8780 8978   Passcode: 110326)</span>
+                        <h3>Education & Advocacy: Navigating the School System</h3>
+
+                        <div class="recording-note">
+                               🎥 This session has concluded.
+
+                                <a href="https://www.youtube.com/watch?v=iUcXVjOyifA" target="_blank">
+                                    Watch Recording → 
+                                </a>
+
+                                |
+
+                                <a href="pdf/reference-sheet1.pdf" target="_blank">
+                                    Resource Guide (PDF) →
+                                </a>
+                        </div>
+
+                    </div>
+                    <div class="schedule-content">
+                        <p>Understanding the school system can feel overwhelming, whether you are directly supporting a
+                            child with disabilities or simply want to be better informed. This session explains how
+                            special education works in Ontario in a clear and accessible way. </p>
+                        <p>You'll gain insight into tools like the Individual Education Plan, learn how families and
+                            educators can work together more effectively, and explore how to advocate for the right
+                            supports. Ideal for parents, caregivers, and anyone interested in inclusive education and
+                            student success.</p>
+
+                        <p class="speaker-info">
+                            <b>Elaine Cagulada, PhD</b><br/>
+                            Elaine Cagulada is a scholar and educator in disability studies and black studies. She has taught K–12 and previously worked with the Alberta Teachers’ Association and the Ontario College of Teachers. She holds a PhD in Social Justice Education from the University of Toronto’s Ontario Institute for Studies in Education, where she currently teaches graduate courses in disability studies.
+                        </p>
+
+                        <p class="speaker-info">
+                            <b>Aparna Raghu Menon</b><br/>
+                            Aparna Raghu Menon is a PhD Candidate in Public Health Sciences at the University of Toronto. Her PhD explores autistic non-verbal communication among children and youth. Aparna's research also includes projects on food and autism. She is a parent counsellor, a tutor for autistic adolescents, and, last but certainly not least, a parent to an 8-year-old son with multiple disabilities.
+                        </p>
+
+                        <div class="video-container">
+                            <a href="https://www.youtube.com/watch?v=iUcXVjOyifA&t=2003s" target="_blank">
+                                <img src="https://img.youtube.com/vi/iUcXVjOyifA/hqdefault.jpg" 
+                                    alt="Watch video">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Tuesday, June 2 (Virtual)</strong><br>
+                        <span>7:00–9:00 PM</span>
+                        <span>Online (Zoom) <a href="https://yorku.zoom.us/j/95287808978?pwd=GmEV2bTR4ERrbcH7AcbYmaM5SH5daO.1">Join meeting</a> (Meeting ID: 952 8780 8978   Passcode: 110326)</span>
+                        <h3>Employment Pathways for Youth with Disabilities</h3>
+                        <div class="recording-note">
+                               🎥 This session has concluded.
+
+                                <a href="https://www.youtube.com/watch?v=vBRIJko0DG8" target="_blank">
+                                    Watch Recording →
+                                </a>
+
+                                |
+
+                                <a href="pdf/reference-sheet2.pdf" target="_blank">
+                                    Resource Guide (PDF) →
+                                </a>
+                        </div>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            Starting the path to employment can feel overwhelming for youth with disabilities and their
+                            families. This session offers a clear and supportive overview of how to take those first
+                            steps with confidence.
+                        </p>
+                        <p>
+                            You'll explore practical ways to build skills and gain experience, learn about programs like
+                            job coaching and supported employment, and understand how to access community resources. The
+                            session also shows how to match supports to different needs and prepare for workplace
+                            expectations.
+                        </p>
+                        <p class="speaker-info">
+                            <b>Mubina Jaffer</b><br/>
+                            Mubina Jaffer is Manager of Training and Education at the Abilities Centre, where she leads initiatives in accessibility, inclusion, and leadership development. A wheelchair user and single mother, she brings lived experience to her work with diverse communities and organizations. She is a former parasport athlete and is passionate about empowering others and building meaningful connections.
+                        </p>
+                        <p class="speaker-info">
+                            <b>Tharsiny Markandu</b><br/>
+                            Tharsiny Markandu is a Family as Faculty member at Holland Bloorview Kids Rehabilitation Hospital, where she co-designs and facilitates learning sessions for families, service providers, and policymakers. She is a South Asian Canadian caregiver to an autistic young adult and has lived experience navigating employment pathways, including job coaching and supported employment programs. She is co-founder of Reach Beyond – Autism and Child Development Centre and holds a Master’s in Psychology and Neuroscience of Mental Health and a Bachelor’s in Engineering.
+                        </p>
+                        <div class="video-container">
+                            <a href="https://www.youtube.com/watch?v=vBRIJko0DG8" target="_blank">
+                                <img src="https://img.youtube.com/vi/vBRIJko0DG8/hqdefault.jpg" 
+                                    alt="Watch video">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Wednesday, June 3 (Virtual)</strong><br>
+                        <span>7:00–9:00 PM</span>
+                        <span>Online (Zoom) <a href="https://yorku.zoom.us/j/95287808978?pwd=GmEV2bTR4ERrbcH7AcbYmaM5SH5daO.1">Join meeting</a> (Meeting ID: 952 8780 8978   Passcode: 110326)</span>
+                        <h3>Transition to Adulthood & Planning Ahead</h3>
+                        <div class="recording-note">
+                               🎥 This session has concluded.
+
+                                <a href="https://www.youtube.com/watch?v=w8iv-wWVEtQ" target="_blank">
+                                    Watch Recording →
+                                </a>
+|
+
+                                <a href="pdf/reference-sheet3.pdf" target="_blank">
+                                    Resource Guide (PDF) →
+                                </a>
+
+                                |
+
+                                <a href="pdf/reference-sheet4.pdf" target="_blank">
+                                    Planning for Beyond Graduation Toolkit (PDF) →
+                                </a>
+                               
+                        </div>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            The move into adulthood can bring many questions for youth with disabilities and their
+                            families. This session provides a clear and supportive overview of what to expect during
+                            this important transition.
+                        </p>
+                        <p>
+                            You'll learn about changes after age 18, including services, funding, and key decisions, as
+                            well as tools like disability savings plans and other supports. We'll also discuss planning
+                            for independence and support needs, and ways to start thinking about next steps.
+                        </p>
+                        <p class="speaker-info">
+                            <b>Lori Beesley</b><br/>
+                            Lori Beesley is Community Relations Coordinator at Partners for Planning. She has extensive experience in family engagement, volunteer programming, and family-centred care in healthcare and disability settings, including at Holland Bloorview Kids Rehabilitation Hospital and the Bloorview Research Institute. She is a parent of a young man with disabilities and is deeply engaged in advocacy, community leadership, and family support initiatives. She is past Senior Director of a national disability charity, Fragile X Research Foundation of Canada, and she currently co-chairs a regional council for Community Living Toronto and holds an Executive Board position with a Family Network.
+                        </p>
+
+                        <p class="speaker-info">
+                            <b>Jemma Rahiman</b><br/>
+                            Jemma Rahiman is Financial Resource and System Navigation Specialist at Partners for Planning. She holds a law degree from York University and supports individuals and families in navigating key financial and government supports, including the Disability Tax Credit (DTC), Registered Disability Savings Plan (RDSP), and Canadian Disability Benefit (CDB). She is committed to helping families build financial security and access essential resources.
+                        </p>
+
+                        <div class="video-container">
+                            <a href="https://www.youtube.com/watch?v=w8iv-wWVEtQ" target="_blank">
+                                <img src="https://img.youtube.com/vi/w8iv-wWVEtQ/hqdefault.jpg" 
+                                    alt="Watch video">
+
+                               
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Thursday, June 4 (Virtual)</strong><br>
+                        <span>7:00–9:00 PM</span>
+                        <span>Online (Zoom) <a href="https://yorku.zoom.us/j/95287808978?pwd=GmEV2bTR4ERrbcH7AcbYmaM5SH5daO.1">Join meeting</a> (Meeting ID: 952 8780 8978   Passcode: 110326)</span>
+                        <h3>Mental Health & Burnout for Caregivers</h3>
+                        <div class="recording-note">
+                               🎥 This session has concluded.
+
+                                <a href="https://www.youtube.com/watch?v=YHr-tRvy7Hw" target="_blank">
+                                    Watch Recording →
+                                </a>
+|
+
+                                <a href="pdf/reference-sheet5.pdf" target="_blank">
+                                    Resource Guide (PDF) →
+                                </a>
+
+                               
+                               
+                               
+                        </div>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            Caring for others is meaningful but can be challenging. This session focuses on mental
+                            health, resilience, and well-being for caregivers, while highlighting the importance of
+                            community support.
+                        </p>
+                        <p>
+                            Participants will learn to recognize stress and burnout, explore simple coping strategies,
+                            and discover ways to strengthen support networks. Whether you are a caregiver or want to
+                            better understand these experiences, this session shows how we can support one another.
+                        </p>
+                        <p class="speaker-info">
+                            <b>Farah Ahmed, PhD</b><br/>
+                            Farah Ahmed is Full Professor in the School of Health Policy and Management at York University and Faculty Fellow at the York Centre for Asian Research. She conducts community-engaged, mixed-method research on health inequities, focusing on immigration, race, gender, and mental health, including neurodiversity and stigma-related issues.
+                        </p>
+                        <p class="speaker-info">
+                            <b>Alan Fung</b><br/>
+                            Dr. Alan Fung is a psychiatrist with expertise in culturally responsive care, spirituality and mental health, neuropsychiatry and genetics, and collaborative mental health approaches. He is the Physician Lead of the Mount Sinai Hospital Seniors' Wellness Centre in Toronto, which provides culturally and linguistically appropriate mental health services for Chinese-speaking seniors and caregivers. He is actively involved in international psychiatric organizations and contributes to medical education and research, while advancing equity, diversity, and inclusion in mental health care.
+                        </p>
+
+                        <div class="video-container">
+                            <a href="https://www.youtube.com/watch?v=YHr-tRvy7Hw" target="_blank">
+                              
+
+                                <img src="https://img.youtube.com/vi/YHr-tRvy7Hw/hqdefault.jpg" 
+                                    alt="Watch video">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="city-section">
+            <h3 id="gta" class="city-tag toronto">📍GTA</h3>
+            <div class="grid schedule-grid">
+                <!-- Event 1 -->
+                <!-- <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Monday, May 31</strong><br>
+                        <span>2:00–3:00 PM</span>
+                        <span>Pierre Elliott Trudeau High School, Markham</span>
+                        <h3>Opening Ceremony</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>Join us for the Opening Ceremony of National AccessAbility Week 2026, a meaningful and
+                            inspiring community gathering that launches a week of conversations, creativity, and
+                            collective action for accessibility and inclusion. Co-organized by North Star Special Needs
+                            Society and York University, this special event will bring together families, educators,
+                            community leaders, advocates, partners, and supporters to celebrate the value of building a
+                            more inclusive society for children and youth with disabilities.</p>
+                        <p>The program will feature opening remarks, guest addresses, community messages, and youth
+                            music performances in a warm and welcoming atmosphere. Designed as both a celebration and a
+                            call to action, the ceremony invites participants not only to witness the start of National
+                            AccessAbility Week, but also to become part of a growing movement that promotes belonging,
+                            dignity, and opportunity for all. Whether you are a parent, educator, student, service
+                            provider, or community member, we warmly welcome you to join us and be part of this
+                            important moment.</p>
+                    </div>
+                </div> -->
+                 <!-- Event 7 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Monday, May 25 – Wednesday, May 27</strong><br>
+                        <span>
+                            May 25: 9:00AM–5:00PM<br/>
+                            May 26: 9:00AM–5:00PM<br/>
+                            May 27: 9:00AM–12:00PM
+                        </span>
+                        <span>Boynton House - 1300 Elgin Mills Rd E, Richmond Hill, ON L4S 1M5</span>
+                        <h3>Art Exhibition (Understanding Disability & Accessibility Theme)</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            This inclusive art exhibition invites children with and without disabilities to create,
+                            express, and imagine together through art. Centered on the themes of understanding
+                            disability and accessibility, the exhibition encourages young participants to share their
+                            thoughts and feelings through creative work, while offering families and community members
+                            an opportunity to see the world through children’s eyes. By creating and appreciating art
+                            together, children can develop greater empathy, understanding, and acceptance of
+                            differences, helping to build a more inclusive community where everyone feels seen,
+                            respected, and valued.
+                        </p>
+                    </div>
+                </div>
+
+                 <!-- Event 10 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, May 30</strong><br>
+                        <span>10:00 AM</span>
+                        <span>Imagine Cinema - 10909 Yonge Street Unit #33, Upper Yonge Place, Lower Level, Yonge St,
+                            Richmond Hill, ON L4C 3E3</span>
+                        <h3>Charity Film Screening: The Super Mario Galaxy Movie</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            This community movie event will feature The Super Mario Galaxy Movie, offering a fun and
+                            enjoyable viewing experience for children, families, and community members. The screening is
+                            designed to be sensory-friendly, creating a more supportive environment for neurodiverse
+                            children and their families. Adjustments will include moderated lighting and sound levels,
+                            flexible seating, and the option for participants to move freely in and out of the space,
+                            helping reduce discomfort related to sensory sensitivities.
+                        </p>
+                        <p>
+                            As part of National AccessAbility Week (NAAW), this event uses a familiar and engaging
+                            medium to invite more people into a welcoming and inclusive public space, where shared
+                            stories and experiences can help foster connection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Sunday, May 31</strong><br>
+                        <span>2:00–4:00 PM</span>
+                        <span>Pierre Elliott Trudeau High School, Markham</span>
+                        <h3>Opening Ceremony & Painting Music Interactive Concert</h3>
+                        <div class="special-notice">
+
+                            <div class="special-notice-title">
+                                🇨🇦 Special Announcement
+                            </div>
+
+                            <p>
+                                The Prime Minister of Canada has sent official greetings for the Opening Ceremony of National AccessAbility Week 2026.
+                            </p>
+
+                            <a href="pdf/PrimeMinisterMessage.pdf" target="_blank">
+                                Read Official Greetings
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="schedule-content">
+                        <p>Join us for the Opening Ceremony of National AccessAbility Week 2026, a meaningful and
+                            inspiring community gathering that launches a week of conversations, creativity, and
+                            collective action for accessibility and inclusion. Co-organized by North Star Special Needs
+                            Society and York University, this special event will bring together families, educators,
+                            community leaders, advocates, partners, and supporters to celebrate the value of building a
+                            more inclusive society for children and youth with disabilities.</p>
+                        <p>The program will feature opening remarks, guest addresses, community messages, and youth
+                            music performances in a warm and welcoming atmosphere. Designed as both a celebration and a
+                            call to action, the ceremony invites participants not only to witness the start of National
+                            AccessAbility Week, but also to become part of a growing movement that promotes belonging,
+                            dignity, and opportunity for all. Whether you are a parent, educator, student, service
+                            provider, or community member, we warmly welcome you to join us and be part of this
+                            important moment.</p>
+                        <p>Painting Music is a unique interactive arts experience in which children and families respond
+                            to live music through painting and creative expression. Originally created by renowned
+                            cellist, educator, and performer Sheng Dong, in collaboration with painter and writer Lydia
+                            Lin, Painting Music is inspired by the idea that music can be felt, seen, and expressed in
+                            many different ways. This inclusive activity welcomes children of all abilities and their
+                            families, and encourages emotional expression, imagination, and joy through the shared
+                            experience of music and art.</p>
+                    </div>
+                </div>
+
+
+                <!-- Event 2 -->
+                <!-- <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Monday, May 31</strong><br>
+                        <span>3:00–4:00 PM</span>
+                        <span>Pierre Elliott Trudeau High School, Markham</span>
+                        <h3>Painting music</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>Painting Music is a unique interactive arts experience in which children and families respond
+                            to live music through painting and creative expression. Originally created by renowned
+                            cellist, educator, and performer Sheng Dong, in collaboration with painter and writer Lydia
+                            Lin, Painting Music is inspired by the idea that music can be felt, seen, and expressed in
+                            many different ways. This inclusive activity welcomes children of all abilities and their
+                            families, and encourages emotional expression, imagination, and joy through the shared
+                            experience of music and art.</p>
+                    </div>
+                </div> -->
+
+
+
+               
+
+                <!-- Event 8 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Tuesday, June 2</strong><br>
+                        <span>5:30–7:30 PM</span>
+                        <span>Highgate Park, 37 Highgate Dr, Markham ON L3R</span>
+                        <h3>Charity Soccer Event (with a Professional Team)</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            NorthStar’s Charity Soccer Engagement Event aims to promote inclusion, connection, and
+                            social participation through sport. This event is expected to take the form of a friendly
+                            match and other interactive soccer activities, bringing together autistic children and
+                            neurotypical peers, in a supportive and welcoming environment. Through shared play,
+                            teamwork, and movement, the event hopes to create meaningful opportunities for children to
+                            interact, build confidence, and experience a sense of belonging. By using soccer as a
+                            platform for inclusion, NorthStar also hopes to encourage families and community members to
+                            recognize the value of accessible and inclusive sport.
+                        </p>
+                    </div>
+                </div>
+
+                
+
+               
+
+               
+                
+                <!-- Event 11 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, June 6</strong><br>
+                        <span>Starts at 6:30 PM</span>
+                        <span>Sleepy Hollow Golf & Country Club - 13242 Tenth Line, Whitchurch-Stouffville, ON L4A
+                            3P8</span>
+                        <h3>Charity Golf Tournament & Closing Ceremony</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            NorthStar’s Golf Charity Experience aims to promote accessibility, inclusion, and community
+                            participation through sport. As the closing event of National AccessAbility Week 2026, this
+                            activity invites participants of all abilities and backgrounds to come together in a
+                            welcoming and supportive environment to experience golf.
+                        </p>
+                        <p>
+                            Participants may choose to join a friendly on-course game or take part in a guided practice
+                            session at the driving range. With the support of professional coaches and volunteers,
+                            children with autism, families, and community members can participate at their own pace,
+                            enjoying the fun, interaction, and connection that golf brings in a relaxed setting.
+                        </p>
+
+                        <p>
+                            Following the activity, the NAAW 2026 Closing Ceremony and dinner will take place, featuring
+                            guest remarks, a recap of the week’s activities, and recognition moments such as the “Best
+                            Swing” awards. Through sport, connection, and shared experience, this event not only offers
+                            a memorable experience, but also highlights an important message: everyone deserves the
+                            opportunity to participate in recreation and community life, helping to build a more
+                            inclusive and respectful society.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                     <!-- Event 9 -->
+                <!-- <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Sunday, June 7</strong><br>
+                        <span>2:30–4:00 PM</span>
+                        <span>Richmond Hill Canoe Club, 70 Olde Bayview Ave, Richmond Hill, ON L4E 3C8</span>
+                        <h3>Dragon Boat Charity Event</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            NorthStar’s Charity Dragon Boat Experience is designed to give children and families the
+                            opportunity to experience dragon boating in a safe, supportive, and inclusive setting.
+                            Dragon boating is one of NorthStar’s signature sports, and NorthStar’s dragon boat team won
+                            first place in a dragon boat race last summer. This event is designed to give both children
+                            and adults the opportunity to experience the energy, teamwork, and spirit of this powerful
+                            team sport. On the water in early summer, participants will be able to enjoy a refreshing
+                            and uplifting experience while discovering the sense of connection, encouragement, and
+                            collective strength that dragon boating brings. Through this activity, we hope participants
+                            will not only enjoy the sport itself, but also experience the spirit of NorthStar. With
+                            guidance from professional dragon boat coaches and accompaniment from our dragon boat team,
+                            children will be able to take part in the activity under structured instruction and
+                            encouragement. Through this experience, participants can enjoy teamwork, rhythm, and the
+                            shared excitement of paddling together, while also building confidence and engagement
+                            through sport.
+                        </p>
+                    </div>
+                </div> -->
+
+            
+            </div>
+        </div>
+        <div class="city-section">
+            <h3 id="ottawa" class="city-tag ottawa">📍Ottawa</h3>
+            <div class="grid schedule-grid">
+
+
+                <!-- Event 13 -->
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, May 23-Saturday, June 6</strong><br>
+                        <span>Time coming soon—stay tuned!</span>
+                        <span>Location to be confirmed</span>
+                        <h3>Art Exhibition</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            This community-based art activity begins with participation, inviting children and youth to
+                            explore the themes of inclusion and understanding through creative expression. Inspired by
+                            the concept of “Art Beyond Barriers,” the project encourages children to recognize
+                            differences, express connection in their own ways, and share their perspectives of the world
+                            through art.
+                        </p>
+                        <p>
+                            The activity combines an open call with community art engagement, allowing participants to
+                            express their ideas and emotions through various forms such as painting, crafts, and mixed
+                            media. Through this process, children are naturally introduced to concepts of accessibility
+                            and diverse perspectives in an engaging and meaningful way.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, May 30</strong><br>
+                        <span>Time coming soon—stay tuned!</span>
+                        <span>755 Somerset St W, Ottawa, ON K1R 6R1</span>
+                        <h3>Family Interactive Event</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            This event is designed as a small, supportive gathering for parents and caregivers of children with special needs. Led by professional ECEs and a Mindfulness Trainer, the session will offer families an opportunity to hear a short talk and participate in interactive activities. While parents participate in the salon, children may join nearby supervised art-based activities, such as drawing and painting, etc., with the support of volunteers. Through this event, families can catch up with each other and access practical information, connect with professionals, and feel supported within the community.
+                        </p>
+                       
+                    </div>
+                </div>
+
+                
+
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, June 6</strong><br>
+                        <span>1:00-3:00 PM</span>
+                        <span>Rideau Canoe Club，804 Hog's Back Rd, Ottawa, ON K2C 0B1</span>
+                        <h3>Dragon Boat Charity Event</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            The NorthStar Ottawa Dragon Boat Community Experience draws on the city’s natural waterways
+                            to create an open and welcoming outdoor space for children and families. In this relaxed
+                            environment, participants can connect with nature while experiencing the values of
+                            accessibility and inclusion in a meaningful way.
+                        </p>
+                        <p>
+                            As an extension of NorthStar’s dragon boat program in Toronto, this event places a stronger
+                            emphasis on community participation and connection with the natural environment, offering
+                            more people the opportunity to explore water-based activities and enjoy the fun of outdoor
+                            teamwork.
+                        </p>
+                    </div>
+                </div>
+
+
+                
+
+            </div>
+        </div>
+
+
+
+        <div class="city-section">
+            <h3 id="vancouver" class="city-tag vancouver">📍Vancouver</h3>
+
+            <div class="grid schedule-grid">
+
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Thursday, June 4</strong><br>
+                        <span>10:30 AM–12:30 PM</span>
+                        <span>Canadian Ming Xin Charity School, #4-2909 Bainbridge Ave., Burnaby, BC V5A 2S9</span>
+                        <h3>Parent Empowerment Circle</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            Resource Connection & Emotional Support
+                        </p>
+                        <p>
+                            Join us for a supportive and informative gathering designed for families raising children with special needs. This session will provide a practical overview of the 2026 BC Autism Funding Unit (AFU) policy updates, along with opportunities to connect with experienced professionals, community organizations, and other parents. Families will also witness the official partnership signing between NorthStar Special Needs Society and Hand in Hand Foundation as we work together to strengthen support networks across Canada. Light refreshments will be provided.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <strong>Saturday, June 6</strong><br>
+                        <span>10:30 AM–12:00 PM</span>
+                        <span>Canadian Ming Xin Charity School, #4-2909 Bainbridge Ave., Burnaby, BC V5A 2S9</span>
+                        <h3>Charity Table Tennis Family Wellness Day</h3>
+                    </div>
+                    <div class="schedule-content">
+                        <p>
+                            Sports, Social Connection & Sensory Wellness
+                        </p>
+                        <p>
+                            A fun and inclusive family wellness event centered around table tennis and sensory-friendly physical activity. Children and families will participate in guided coaching, cooperative games, and interactive activities designed to build confidence, coordination, social connection, and physical wellness in a welcoming environment. No previous table tennis experience is required. All participating children will receive a commemorative “NAAW Little Athlete” medal.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p>*The term “disability” in this series includes neurodiversity (such as Autism and ADHD), learning
+            disabilities, and physical or developmental conditions. </p>
+
+        </div>
+
+        <br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXqUH5I34WIuZ0VJ17WSh9AiixEH9VzarAXWAMRN-hWb8zQ/viewform" target="_blank" class="btn btn-primary">Register for Events</a>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section">
+        <h2>Who Should Attend</h2>
+        <p class="section-intro">
+            These events are open to anyone who wants to learn, connect, and contribute to a more inclusive future.
+        </p>
+
+        <div class="audience-columns">
+
+            <div class="audience-group">
+                <h3>Individuals & Families</h3>
+                <ul>
+                    <li>People with disabilities</li>
+                    <li>Caregivers, parents, and family members</li>
+                    <li>Students and youth with disabilities</li>
+                </ul>
+            </div>
+
+            <div class="audience-group">
+                <h3>Educators & School Professionals</h3>
+                <ul>
+                    <li>Teachers, principals, and school administrators</li>
+                    <li>Educational support staff</li>
+                    <li>Post-secondary staff and accessibility service providers</li>
+                </ul>
+            </div>
+
+            <div class="audience-group">
+                <h3>Employers & Workplace Leaders</h3>
+                <ul>
+                    <li>Business owners, managers, and HR professionals</li>
+                    <li>Workplace inclusion advocates</li>
+                    <li>Employees interested in disability and equity</li>
+                </ul>
+            </div>
+
+            <div class="audience-group">
+                <h3>Health & Social Service Providers</h3>
+                <ul>
+                    <li>Therapists, counsellors, and healthcare professionals</li>
+                    <li>Disability service providers</li>
+                    <li>Staff from nonprofit and community organizations</li>
+                </ul>
+            </div>
+
+            <div class="audience-group">
+                <h3>Community Builders & Changemakers</h3>
+                <ul>
+                    <li>Community leaders and advocates</li>
+                    <li>Policymakers and government staff</li>
+                    <li>Anyone interested in disability awareness and inclusion in Asian-Canadian communities</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="section partners">
+        <h2>Partners and Supporters</h2>
+        <p class="section-intro">
+            This initiative is made possible through the support and collaboration of organizations committed to
+            accessibility, inclusion, and community well-being.
+        </p>
+
+        <!-- Project Lead -->
+        <div class="partner-group">
+            <div class="partner-role">Project Lead and Organizer</div>
+            <div class="partner-item">
+                <img src="image/northstar_logo.jpg" alt="NorthStar Logo">
+                <div>
+                    <strong>NorthStar Special Needs Society</strong>
+                    <p>Serving children with autism and their families through inclusive community programming since
+                        2021.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funded By -->
+        <div class="partner-group">
+            <div class="partner-role">Funded By</div>
+            <div class="partner-item">
+                <img src="image/Canada_logo.jpg" alt="Government of Canada Logo">
+                <div>
+                    <strong>Government of Canada</strong>
+                    <p>Accessible Canada - National AccessAbility Week Funding<br>
+                        Social Development Partnerships Program - Disability Component</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Partner -->
+        <div class="partner-group">
+            <div class="partner-role">Key Partner</div>
+            <div class="partner-item">
+                <img src="image/york-U_logo.jpg" alt="York University Logo">
+                <div>
+                    <strong>Asian Business and Management Program (York University)</strong>
+                    <p>Supporting the initiative's educational and community engagement dimensions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supporting -->
+        <div class="partner-group">
+            <div class="partner-role">Additional Supporting Organization</div>
+            <div class="partner-item">
+                <img src="image/newstart_nexus_logo.jpg" alt="NewStart Nexus Logo">
+                <div>
+                    <strong>NewStart Nexus</strong>
+                    <p>Providing consultation and project management support to help strengthen nonprofit initiatives
+                        and community impact.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Have a question about the events, want to stay connected, or are interested in future programming?</p>
+        <p>General Inquiries: <a href="mailto:naaw@nsns.ca">naaw@nsns.ca</a></p>
+
+
+    </section>
+
+    <!-- SHARE -->
+    <section class="section highlight">
+        <h2>Help Spread the Word</h2>
+
+        <p>Want to share this initiative with your community, network, or audience?</p>
+        <p>Download our eMedia Kit for ready-to-use outreach materials, including:</p>
+        <ul>
+            <li>social media graphics</li>
+            <li>printable poster</li>
+            <li>press release and promotional copy for newsletters, blogs, and community outreach</li>
+        </ul>
+        <p>By sharing this initiative, you help widen the conversation, challenge stigma, and support a more inclusive
+            future.</p>
+
+        <p>Download our eMedia Kit with ready-to-use outreach materials.<br /><br /></p>
+        <a href="#" class="btn btn-secondary">Download eMedia Kit</a>
+    </section>
+
+    <footer>
+        <p>© 2026 NorthStar Special Needs Society</p>
+    </footer>
+
+
+    <script>
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".nav");
+        const navLinks = document.querySelectorAll(".nav a");
+
+        // Toggle menu
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+
+        // Close menu when any link is clicked (mobile)
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+            });
+        });
+
+
+        const scheduleCards = document.querySelectorAll(".schedule-card");
+
+        scheduleCards.forEach(card => {
+            card.addEventListener("click", () => {
+
+                const isActive = card.classList.contains("active");
+
+                // Close ALL cards first
+                scheduleCards.forEach(c => c.classList.remove("active"));
+
+                // If it was NOT active, open it
+                if (!isActive) {
+                    card.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+
+</html>
