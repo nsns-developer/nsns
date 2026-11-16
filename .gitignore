@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/nsns_NAAW2025/.vs/nsns_NARR
+/nsns_waiver/tools/docx_work
